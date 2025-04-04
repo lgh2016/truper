@@ -1,42 +1,43 @@
 package com.test.app.dto;
 
-public class ProductoDto {
+import java.io.Serializable;
+import java.math.BigDecimal;
 
-	private Long producto_id;
-	private Long orden_id;
-	private String codigo;
-	private Long precio;
+/**
+ * DTO for {@link com.test.app.entity.Producto}
+ */
+public class ProductoDto implements Serializable {
+    private final Integer id;
+    private final String codigo;
+    private final String descripcion;
+    private final BigDecimal precio;
+    private final OrdeneDto orden;
 
-	public Long getProducto_id() {
-		return producto_id;
-	}
+    public ProductoDto(Integer id, String codigo, String descripcion, BigDecimal precio, OrdeneDto orden) {
+        this.id = id;
+        this.codigo = codigo;
+        this.descripcion = descripcion;
+        this.precio = precio;
+        this.orden = orden;
+    }
 
-	public void setProducto_id(Long producto_id) {
-		this.producto_id = producto_id;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public Long getOrden_id() {
-		return orden_id;
-	}
+    public String getCodigo() {
+        return codigo;
+    }
 
-	public void setOrden_id(Long orden_id) {
-		this.orden_id = orden_id;
-	}
+    public String getDescripcion() {
+        return descripcion;
+    }
 
-	public String getCodigo() {
-		return codigo;
-	}
+    public BigDecimal getPrecio() {
+        return precio;
+    }
 
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
-	}
-
-	public Long getPrecio() {
-		return precio;
-	}
-
-	public void setPrecio(Long precio) {
-		this.precio = precio;
-	}
-
+    public OrdeneDto getOrden() {
+        return orden;
+    }
 }

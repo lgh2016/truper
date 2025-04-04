@@ -1,15 +1,14 @@
 package com.test.app.controller;
 
-import org.springframework.web.bind.annotation.RestController;
-
-import com.test.app.dto.OrdenDto;
-import com.test.app.service.OrdenService;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.test.app.dto.OrdeneDto;
+import com.test.app.service.OrdenService;
 
 @RestController
 public class OrdenController {
@@ -40,7 +39,7 @@ public class OrdenController {
 	 * @return
 	 */
 	@PostMapping()
-	public ResponseEntity<?> save(@RequestBody OrdenDto dto) {
+	public ResponseEntity<?> save(@RequestBody OrdeneDto dto) {
 		return ordenService.save(dto);
 	}
 

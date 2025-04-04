@@ -3,7 +3,7 @@ package com.test.app.service.impl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.test.app.dto.OrdenDto;
+import com.test.app.dto.OrdeneDto;
 import com.test.app.service.OrdenService;
 
 @Service
@@ -22,7 +22,7 @@ public class OrdenServiceImpl implements OrdenService{
 	 * CREAR ORDEN
 	 */
 	@Override
-	public ResponseEntity<?> save(OrdenDto dto) {
+	public ResponseEntity<?> save(OrdeneDto dto) {
 		System.out.println("ORDEN DE ENTRADA: " + dto);
 		
 		

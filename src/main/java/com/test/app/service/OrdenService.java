@@ -2,7 +2,7 @@ package com.test.app.service;
 
 import org.springframework.http.ResponseEntity;
 
-import com.test.app.dto.OrdenDto;
+import com.test.app.dto.OrdeneDto;
 
 public interface OrdenService {
 
@@ -11,6 +11,6 @@ public interface OrdenService {
 	 */
 	ResponseEntity<?> getOrden(Long id);
 
-	ResponseEntity<?> save(OrdenDto dto);
+	ResponseEntity<?> save(OrdeneDto dto);
 
 }
