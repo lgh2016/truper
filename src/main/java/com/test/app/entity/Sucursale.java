@@ -1,37 +1,32 @@
 package com.test.app.entity;
 
-import org.springframework.data.annotation.Id;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
-@Table(name = "sucursales")
+@Table(name = "sucursales", schema = "testtruper")
 public class Sucursale {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "sucursales_id", nullable = false)
+    private Integer id;
 
+    @Column(name = "nombre", nullable = false, length = 50)
+    private String nombre;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long sucursal_id;
-	
-	private String nombre;
+    public Integer getId() {
+        return id;
+    }
 
-	public Long getSucursal_id() {
-		return sucursal_id;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public void setSucursal_id(Long sucursal_id) {
-		this.sucursal_id = sucursal_id;
-	}
+    public String getNombre() {
+        return nombre;
+    }
 
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
 }

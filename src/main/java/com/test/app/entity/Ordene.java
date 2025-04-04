@@ -1,62 +1,58 @@
 package com.test.app.entity;
 
-import java.util.Date;
+import jakarta.persistence.*;
 
-import org.springframework.data.annotation.Id;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @Entity
-@Table(name = "ordenes")
+@Table(name = "ordenes", schema = "testtruper")
 public class Ordene {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "orden_id", nullable = false)
+    private Integer id;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long orden_id;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "sucursales_id")
+    private com.test.app.entity.Sucursale sucursales;
 
-	@ManyToOne
-	@JoinColumn(name = "sucursal_id")
-	private Long sucursal_id;
-	
-	private Date fecha;
-	
-	private Long total;
+    @Column(name = "fecha", nullable = false)
+    private LocalDate fecha;
 
-	public Long getOrden_id() {
-		return orden_id;
-	}
+    @Column(name = "total", nullable = false, precision = 10)
+    private BigDecimal total;
 
-	public void setOrden_id(Long orden_id) {
-		this.orden_id = orden_id;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public Long getSucursal_id() {
-		return sucursal_id;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public void setSucursal_id(Long sucursal_id) {
-		this.sucursal_id = sucursal_id;
-	}
+    public com.test.app.entity.Sucursale getSucursales() {
+        return sucursales;
+    }
 
-	public Date getFecha() {
-		return fecha;
-	}
+    public void setSucursales(com.test.app.entity.Sucursale sucursales) {
+        this.sucursales = sucursales;
+    }
 
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
-	}
+    public LocalDate getFecha() {
+        return fecha;
+    }
 
-	public Long getTotal() {
-		return total;
-	}
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
+    }
 
-	public void setTotal(Long total) {
-		this.total = total;
-	}
+    public BigDecimal getTotal() {
+        return total;
+    }
+
+    public void setTotal(BigDecimal total) {
+        this.total = total;
+    }
 
 }

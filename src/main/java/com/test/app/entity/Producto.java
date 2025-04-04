@@ -1,70 +1,68 @@
 package com.test.app.entity;
 
-import org.springframework.data.annotation.Id;
+import jakarta.persistence.*;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import java.math.BigDecimal;
 
 @Entity
-@Table(name = "productos")
+@Table(name = "productos", schema = "testtruper")
 public class Producto {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "producto_id", nullable = false)
+    private Integer id;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long producto_id;
+    @Column(name = "codigo", nullable = false, length = 20)
+    private String codigo;
 
-	@ManyToOne
-	@JoinColumn(name = "orden_id")
-	private Long orden_id;
+    @Column(name = "descripcion", nullable = false, length = 200)
+    private String descripcion;
 
-	private String codigo;
+    @Column(name = "precio", nullable = false, precision = 10)
+    private BigDecimal precio;
 
-	private String descripcion;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "orden_id", nullable = false)
+    private Ordene orden;
 
-	private Long precio;
+    public Integer getId() {
+        return id;
+    }
 
-	public Long getProducto_id() {
-		return producto_id;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public void setProducto_id(Long producto_id) {
-		this.producto_id = producto_id;
-	}
+    public String getCodigo() {
+        return codigo;
+    }
 
-	public Long getOrden_id() {
-		return orden_id;
-	}
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
 
-	public void setOrden_id(Long orden_id) {
-		this.orden_id = orden_id;
-	}
+    public String getDescripcion() {
+        return descripcion;
+    }
 
-	public String getCodigo() {
-		return codigo;
-	}
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
 
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
-	}
+    public BigDecimal getPrecio() {
+        return precio;
+    }
 
-	public String getDescripcion() {
-		return descripcion;
-	}
+    public void setPrecio(BigDecimal precio) {
+        this.precio = precio;
+    }
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
+    public Ordene getOrden() {
+        return orden;
+    }
 
-	public Long getPrecio() {
-		return precio;
-	}
-
-	public void setPrecio(Long precio) {
-		this.precio = precio;
-	}
+    public void setOrden(Ordene orden) {
+        this.orden = orden;
+    }
 
 }
